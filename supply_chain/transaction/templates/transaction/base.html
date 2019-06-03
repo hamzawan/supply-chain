@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dashboard Wasi</title>
+  <title>Print Links</title>
 
 
   <!-- Custom fonts for this template-->
@@ -22,6 +22,9 @@
   <!-- Custom styles for this template-->
   <link href="{% static 'transaction/css/sb-admin.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'transaction/css/table.css' %}">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
@@ -35,14 +38,6 @@
       <i class="fas fa-bars"></i>
     </button>
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <!-- <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div> -->
     </form>
 
 
@@ -103,31 +98,16 @@
           <span>Inventory</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
+          <a class="dropdown-item" href="{% url 'add-item' %}">Add Item</a>
+          <a class="dropdown-item" href="{% url 'stock' %}">Stock</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-industry"></i>
-          <span>Supplier</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fa fa-users" aria-hidden="true"></i>
-          <span>Customer</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-hidden="false">
           <i class="fa fa-money" aria-hidden="true"></i>
           <span>Transaction</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="{% url 'chart-of-account' %}">Chart Of Accounts</a>
           <a class="dropdown-item" href="{% url 'purchase' %}">Purchase</a>
           <a class="dropdown-item" href="{% url 'purchase-return' %}">Purchase Return</a>
           <a class="dropdown-item" href="{% url 'sale' %}">Sale</a>
@@ -151,7 +131,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
+            <span>Powered By <a target="_blank" href="https://techfurq.com/">Tech Furq</a> </span>
           </div>
         </div>
       </footer>
@@ -202,8 +182,8 @@
   <script src="{% static 'transaction/js/sb-admin.min.js' %}"></script>
 
   <!-- Demo scripts for this page-->
-  <script src="{% static 'transaction/js/demo/datatables-demo.js' %}"></script>
-  <script src="{% static 'transaction/js/demo/chart-area-demo.js' %}"></script>
+  <script type="text/javascript" src="{% static 'transaction/inventory.js' %}"></script>
+  <script type="text/javascript" src="{% static 'transaction/script.js' %}"></script>
 
 </body>
 

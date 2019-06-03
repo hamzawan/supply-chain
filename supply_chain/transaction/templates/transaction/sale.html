@@ -1,7 +1,7 @@
-{% extends 'transaction/base.html' %}
+{% extends "transaction/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block body %}
+
 <div class="card" style="width: 100%;">
 <div class="card-header">
   <h4>Sales</h4>
@@ -19,29 +19,31 @@
         </button>
       </div>
       <div class="col-md-8">
-        <a role="button" href="#" style="float:right;" class="btn btn-outline-secondary" name="button"><i class="fas fa-plus"></i> Add New</a>
+        <a role="button" href="{% url 'new-purchase' %}" style="float:right;" class="btn btn-outline-secondary" name="button"><i class="fas fa-plus"></i> Add New</a>
       </div>
     </div>
     <br>
-    <!--<div class="table table-responsive content-loader">-->
-      <table class="table table-bordered">
+    <div class="table table-responsive content-loader">
+      <table class="table table-bordered" id="dataTable">
           <thead>
               <tr>
-                  <th width="140px">Purchase ID</th>
+                  <th>S No.</th>
+                  <th width="300px">Sales ID</th>
                   <th >Date</th>
                   <th >Customer</th>
                   <th >From</th>
-                  <th >Action</th>
+                  <th width="600px">Action</th>
               </tr>
           </thead>
           <tbody>
-            {% for value in all_sales reversed %}
+            {% for value in all_sale reversed %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>{{forloop.counter}}</td>
+                <td>{{ value.sale_no }}</td>
                 <td>{{ value.date }}</td>
                 <td>{{ value.account_id.account_title }}</td>
                 <td>user1</td>
-                <td><a class="edit_list" href="{% url 'edit-delivery-challan-supplier' pk=value.id %}" data-toggle=""><i class="material-icons">&#xE254;</i></a><a href="{% url 'new-sale-return' pk=value.id %}" data-toggle=""><i class="fas fa-undo"></i></a><a class="delete"  data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td>
+                <td><a class="edit_list" href="" data-toggle=""><i class="material-icons">&#xE254;</i></a><a class="return" href="" data-toggle=""><i class="fas fa-undo"></i></a><a href="{% url 'sale-print' pk=value.id %}" target="_blank"><i class="fa fa-print" id="print_icon" aria-hidden="true"></i></a><a class="delete_purchase"  data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -50,4 +52,6 @@
   </li>
 </ul>
 </div>
-{% endblock %}
+
+
+{% endblock body %}
